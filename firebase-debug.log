@@ -1,0 +1,16 @@
+[debug] [2020-01-31T04:42:18.140Z] ----------------------------------------------------------------------
+[debug] [2020-01-31T04:42:18.150Z] Command:       /usr/bin/node /usr/bin/firebase login
+[debug] [2020-01-31T04:42:18.151Z] CLI Version:   7.11.0
+[debug] [2020-01-31T04:42:18.151Z] Platform:      linux
+[debug] [2020-01-31T04:42:18.151Z] Node Version:  v10.16.0
+[debug] [2020-01-31T04:42:18.155Z] Time:          Fri Jan 31 2020 06:42:18 GMT+0200 (Eastern European Standard Time)
+[debug] [2020-01-31T04:42:18.155Z] ----------------------------------------------------------------------
+[debug] [2020-01-31T04:42:18.155Z] 
+[info] i  Firebase optionally collects CLI usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+
+[info] i  To change your data collection preference at any time, run `firebase logout` and log in again.
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=601061018&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...

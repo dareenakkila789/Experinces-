@@ -1,62 +1,46 @@
-import { AppLoading } from 'expo';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { Component } from "react";
+import { Text, View, StyleSheet } from "react-native";
+import { Constants } from "expo";
+import LoginScreen from "./components/Login";
 
-import AppNavigator from './navigation/AppNavigator';
+import {
+  createStackNavigator,
+  createBottomTabNavigator,
+  createAppContainer,
+  createSwitchNavigator
+} from "react-navigation";
 
-export default function App(props) {
-  const [isLoadingComplete, setLoadingComplete] = useState(false);
+import * as firebase from "firebase";
+const firebaseConfig = {
+  apiKey: "AIzaSyC8yRaA5V-hrWjm7sl-8zSF-DJ2ZkE2OFU",
+  authDomain: "exchange-experiences.firebaseapp.com",
+  databaseURL: "https://exchange-experiences.firebaseio.com",
+  projectId: "exchange-experiences",
+  storageBucket: "exchange-experiences.appspot.com",
+  messagingSenderId: "318757269452",
+  appId: "1:318757269452:web:e42dfac2463d95448db769",
+  measurementId: "G-4P8152PSVS"
+};
+firebase.initializeApp(firebaseConfig);
 
-  if (!isLoadingComplete && !props.skipLoadingScreen) {
-    return (
-      <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
-      />
-    );
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-        <AppNavigator />
-      </View>
-    );
-  }
-}
 
-async function loadResourcesAsync() {
-  await Promise.all([
-    Asset.loadAsync([
-      require('./assets/images/robot-dev.png'),
-      require('./assets/images/robot-prod.png'),
-    ]),
-    Font.loadAsync({
-      // This is the font that we are using for our tab bar
-      ...Ionicons.font,
-      // We include SpaceMono because we use it in HomeScreen.js. Feel free to
-      // remove this if you are not using it in your app
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-    }),
-  ]);
-}
+// const Tabs = createBottomTabNavigator({
+//   Home: FeedScreen,
+//   Create: CreateStack,
+//   Profile: ProfileStack
+// });
 
-function handleLoadingError(error) {
-  // In this case, you might want to report the error to your error reporting
-  // service, for example Sentry
-  console.warn(error);
-}
-
-function handleFinishLoading(setLoadingComplete) {
-  setLoadingComplete(true);
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+const Switch = createSwitchNavigator({
+  Login: LoginScreen,
+  //App: Tabs
 });
+
+const Apps = createAppContainer(Switch);
+
+const AuthSwitch = createSwitchNavigator({
+  // App: Tabs,
+  Login: LoginScreen
+});
+
+const App = createAppContainer(AuthSwitch);
+export default App;
